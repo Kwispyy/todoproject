@@ -1,0 +1,39 @@
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont, QStandardItem, QStandardItemModel
+from PyQt5 import uic
+
+class MyGUI(QMainWindow):
+    def __init__(self):
+        super(MyGUI, self).__init__()
+
+        uic.loadUi("todo.ui", self)
+        self.show()
+
+        self.setFixedSize(452, 683)
+
+        self.setWindowTitle("Dementiev Dmitriy Todo v0.1")
+        self.model = QStandardItemModel()
+        self.reminderList.setModel(self.model)
+
+        self.addButton.clicked.connect(self.add_reminder)
+        self.deleteButton.clicked.connect(self.del_reminder)
+        self.shareButton.clicked.connect(self.share)
+        self.changeButton.clicked.connect(self.change_reminder)
+
+
+    def add_reminder(self):
+        
+        self.show()
+
+    def change_reminder(self):
+        print("Change")
+
+    def del_reminder(self):
+        print("Delete")
+
+    def share(self):
+        print("Share")
+
+app = QApplication([])
+window = MyGUI()
+app.exec_()
